@@ -1,6 +1,65 @@
 <div class="p-grid">
-  <div class="p-col-12">1</div>
-  <div class="p-col-6">2</div>
-  <div class="p-col-6">3</div>
-  <div class="p-col-12">4</div>
+  <div class="p-col-12">
+    <div class="p-grid p-fluid">
+      <div class="p-col-12 p-md-6" style="padding-top: 40px">
+        <span class="p-float-label">
+          <input
+            id="first-name"
+            type="text"
+            pInputText
+            [value]="(customer$ | async).personalD.firstName"
+          />
+          <label for="first-name">Firstname</label>
+        </span>
+      </div>
+
+      <div class="p-col-12 p-md-6" style="padding-top: 40px">
+        <span class="p-float-label">
+          <input
+            id="last-name"
+            type="text"
+            pInputText
+            [value]="(customer$ | async).personalD.lastName"
+          />
+          <label for="last-name">Lastname</label>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-5">
+    <i
+      *ngFor="let todoItem of (customer$ | async).todoList"
+      class="pi pi-check"
+      style="font-size: 2rem; padding-top: 20px"
+      ><span style="padding-left: 10px">{{ todoItem }}</span></i
+    >
+  </div>
+  <div class="p-col-7">
+    <p-carousel
+      [value]="(customer$ | async).suggestions"
+      [numVisible]="3"
+      [numScroll]="3"
+    >
+      <ng-template let-image pTemplate="item">
+        <div class="image-item">
+          <div class="image-item-content">
+            <div class="p-mb-3">
+              <img [src]="image.url" [alt]="image.location" class="image" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <div class="p-col-12">
+    <div class="layout-footer">
+      <h5>Contact us:</h5>
+      <div class="p-mb-3 p-text-left">
+        Email: {{ (customer$ | async).contactDetails.email }}
+      </div>
+      <div class="p-mb-3 p-text-left">
+        Phone number: {{ (customer$ | async).contactDetails.phoneNumber }}
+      </div>
+    </div>
+  </div>
 </div>
