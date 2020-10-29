@@ -5,6 +5,10 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuModule } from 'primeng/menu';
 import { InputTextModule } from 'primeng/inputtext';
 import { CarouselModule } from 'primeng/carousel';
+import { TableModule } from 'primeng/table';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   imports: [],
@@ -15,6 +19,10 @@ import { CarouselModule } from 'primeng/carousel';
     PanelMenuModule,
     MenuModule,
     InputTextModule,
+    TableModule,
+    SelectButtonModule,
+    InputTextareaModule,
+    ButtonModule,
   ],
   providers: [],
 })

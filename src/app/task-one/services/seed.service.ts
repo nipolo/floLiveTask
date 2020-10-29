@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CustomerModel } from './store';
+import { AccountModel, CustomerModel } from './store';
 
 @Injectable()
 export class SeedService {
@@ -54,6 +54,25 @@ export class SeedService {
           url: 'https://i.ibb.co/CzcH4WR/IMG-20200411-165346.jpg',
         },
       ],
+    };
+  }
+
+  public getAccount(): AccountModel {
+    return {
+      legalInformation: {
+        passportNumber: 123456,
+        avatarUrl: 'https://i.ibb.co/2kkrNnZ/fbt.jpg',
+      },
+      transactions: [
+        { amount: 1.1, currency: 'BGN', date: new Date('1/2/2019') },
+        { amount: 2.1, currency: 'BGN', date: new Date('1/6/2019') },
+        { amount: 4.3, currency: 'USD', date: new Date('4/2/2019') },
+      ],
+      settings: {
+        desktopNotification: false,
+        mailNotification: true,
+        smsNotification: true,
+      },
     };
   }
 }

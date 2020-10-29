@@ -6,3 +6,7 @@ const getTaskOneState = createFeatureSelector<TaskOneState>('task-one');
 export const selectCustomer = createSelector(getTaskOneState, (state) => {
   return state.customer;
 });
+
+export const selectAccount = createSelector(getTaskOneState, (state) => {
+  return state.account;
+});

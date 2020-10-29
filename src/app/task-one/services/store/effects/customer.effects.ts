@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
-import { of, Subject } from 'rxjs';
-import { tap, exhaustMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { exhaustMap } from 'rxjs/operators';
 
 import * as customerActions from '../actions/customer.actions';
+import * as accountActions from '../actions/account.actions';
 import { SeedService } from '../../seed.service';
 @Injectable()
 export class CustomerEffects {
@@ -15,6 +16,16 @@ export class CustomerEffects {
       exhaustMap(() => {
         const customer = this.seedService.getCustomer();
         return of(customerActions.seedCustomerSucceeded({ customer }));
+      })
+    )
+  );
+
+  seedAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(accountActions.seedAccount),
+      exhaustMap(() => {
+        const account = this.seedService.getAccount();
+        return of(accountActions.seedAccountSucceeded({ account }));
       })
     )
   );

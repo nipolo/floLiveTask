@@ -1,6 +1,61 @@
 <div class="p-grid">
-  <div class="p-col-12">1</div>
-  <div class="p-col-5">2</div>
-  <div class="p-col-7">3</div>
-  <div class="p-col-12">4</div>
+  <div class="p-col-12">
+    <img [src]="(account$ | async).legalInformation.avatarUrl" width="100" />
+    <span class="name">{{
+      "PassportID: " + (account$ | async).legalInformation.passportNumber
+    }}</span>
+  </div>
+  <div class="p-col-5">
+    <h2>Transaction history</h2>
+    <p-table [value]="(account$ | async).transactions">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Date</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+        <tr>
+          <td>{{ rowData.currency }}</td>
+          <td>{{ rowData.amount }}</td>
+          <td>{{ rowData.date | date }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="p-col-7">
+    <h2>Settings</h2>
+    <h5>Email notification</h5>
+    <p-selectButton
+      [options]="onOffOptions"
+      [ngModel]="(account$ | async).settings.mailNotification"
+    ></p-selectButton>
+    <h5>Desktop notification</h5>
+    <p-selectButton
+      [options]="onOffOptions"
+      [ngModel]="(account$ | async).settings.desktopNotification"
+    ></p-selectButton>
+    <h5>SMS notification</h5>
+    <p-selectButton
+      [options]="onOffOptions"
+      [ngModel]="(account$ | async).settings.smsNotification"
+    ></p-selectButton>
+  </div>
+  <div class="p-col-12">
+    <div class="card">
+      <h2>Feedback form</h2>
+      <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col-12 p-md-4">
+          <label for="email">Email</label>
+          <input id="email" type="text" pInputText />
+        </div>
+        <div class="p-field p-col-12 p-md-9">
+          <label for="message">Message</label>
+          <textarea id="message" type="text" rows="4" pInputTextarea></textarea>
+        </div>
+      </div>
+      <p-button label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+    </div>
+  </div>
 </div>
