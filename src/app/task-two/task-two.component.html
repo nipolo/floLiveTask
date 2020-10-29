@@ -1,0 +1,94 @@
+<form [formGroup]="dynamicForm">
+  <div class="p-grid">
+    <div class="p-col-12 p-lg-2">
+      <div class="p-field-radiobutton">
+        <input
+          type="radio"
+          name="yesNotSent"
+          formControlName="yesNotSent"
+          [value]="yesNoEnum.YES"
+          id="sent"
+        />
+        <label for="sent">already sent</label>
+      </div>
+    </div>
+    <div class="p-col-12 p-lg-2">
+      <div class="p-field-radiobutton">
+        <input
+          type="radio"
+          name="yesNotSent"
+          formControlName="yesNotSent"
+          [value]="yesNoEnum.NO"
+          id="notSent"
+        />
+        <label for="notSent">not sent</label>
+      </div>
+    </div>
+
+    <div class="p-col-12 p-lg-8"></div>
+    <ng-container *ngIf="alreadySent">
+      <div class="p-col-12 p-lg-4">
+        <h5>Document upload</h5>
+        <p-fileUpload
+          customUpload="true"
+          maxFileSize="1000000"
+          multiple="multiple"
+          (onSelect)="onSelectedDocuments($event)"
+          (onClear)="onClearedDocuments($event)"
+        ></p-fileUpload>
+      </div>
+
+      <div class="p-col-12 p-lg-4">
+        <h5>Send date</h5>
+        <p-calendar formControlName="sendDate"></p-calendar>
+      </div>
+      <div class="p-col-12 p-lg-4">
+        <h5>Comment</h5>
+        <textarea formControlName="comment" rows="5" pInputTextarea></textarea>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="notSent">
+      <div class="p-col-12 p-lg-4">
+        <h5>Passport number</h5>
+        <p-autoComplete
+          formControlName="passportNumber"
+          [suggestions]="passportNumbersFiltered"
+          (completeMethod)="filterPassportNumber($event)"
+        ></p-autoComplete>
+      </div>
+
+      <div class="p-col-12 p-lg-4">
+        <h5>Indicate if the document is urgent</h5>
+        <div class="p-field-radiobutton">
+          <input
+            type="radio"
+            name="urgentDocument"
+            formControlName="urgentDocument"
+            [value]="yesNoEnum.YES"
+            id="urgent"
+          />
+          <label for="sent">urgent</label>
+        </div>
+        <div class="p-field-radiobutton">
+          <input
+            type="radio"
+            name="urgentDocument"
+            formControlName="urgentDocument"
+            [value]="yesNoEnum.NO"
+            id="notUrgent"
+          />
+          <label for="notSent">not urgent</label>
+        </div>
+      </div>
+
+      <div *ngIf="showDeadline" class="p-col-12 p-lg-4">
+        <h5>Deadline</h5>
+        <p-calendar formControlName="deadline"></p-calendar>
+      </div>
+    </ng-container>
+
+    <div class="p-col-12 p-lg-8">
+      <p-button [disabled]="!dynamicForm.valid" label="Submit"></p-button>
+    </div>
+  </div>
+</form>

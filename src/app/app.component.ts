@@ -13,7 +13,7 @@ export class AppComponent {
   ngOnInit() {
     this.items = [
       { label: 'Task1', routerLink: 'task1' },
-      { label: 'Task2', routerLink: 'task1' },
+      { label: 'Task2', routerLink: 'task2' },
       { label: 'Task3', routerLink: 'task1' },
     ];
   }

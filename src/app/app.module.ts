@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { SharedModule } from './shared';
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
 
     StoreModule.forRoot(
       {},
