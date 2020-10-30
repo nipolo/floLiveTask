@@ -12,7 +12,6 @@ import { ButtonTypeEnum } from './flo-button-type.enum';
   styleUrls: ['./flo-button.component.css'],
   template: `
     <div
-      [class]="styleClass"
       [style]="styles"
       (click)="onClick.emit($event)"
       [style.background-color]="currentBackgroundColor"
