@@ -1,7 +1,8 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { FloButton } from './flo-button.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FloButton } from './flo-button.component';
 import { ButtonTypeEnum } from './flo-button-type.enum';
 
 describe('Button', () => {

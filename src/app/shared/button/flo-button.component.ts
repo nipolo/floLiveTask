@@ -5,6 +5,7 @@ import {
   Input,
   ChangeDetectionStrategy,
 } from '@angular/core';
+
 import { ButtonTypeEnum } from './flo-button-type.enum';
 
 @Component({
