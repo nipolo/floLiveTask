@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { FloButton } from './button';
 
 import { PrimengModule } from './primeng';
 
@@ -13,13 +14,14 @@ import { PrimengModule } from './primeng';
     RouterModule,
     PrimengModule,
   ],
-  declarations: [],
+  declarations: [FloButton],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
     PrimengModule,
+    FloButton,
   ],
   providers: [],
 })

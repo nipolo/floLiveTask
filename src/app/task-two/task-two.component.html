@@ -81,14 +81,18 @@
         </div>
       </div>
 
-      <div *ngIf="showDeadline" class="p-col-12 p-lg-4">
+      <div class="p-col-12 p-lg-4">
         <h5>Deadline</h5>
         <p-calendar formControlName="deadline"></p-calendar>
       </div>
     </ng-container>
 
     <div class="p-col-12 p-lg-8">
-      <p-button [disabled]="!dynamicForm.valid" label="Submit"></p-button>
+      <p-button
+        [disabled]="!dynamicForm.valid"
+        label="Submit"
+        (onClick)="dynamicForm.reset()"
+      ></p-button>
     </div>
   </div>
 </form>

@@ -38,10 +38,6 @@ export class TaskTwoComponent implements OnInit {
     return this.yesNotSentControl.value === YesNoEnum.NO;
   }
 
-  get showDeadline(): boolean {
-    return this.urgentDocumentControl.value === YesNoEnum.YES;
-  }
-
   constructor(private fb: FormBuilder) {
     this.dynamicForm = this.fb.group(
       {
